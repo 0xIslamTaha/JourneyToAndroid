@@ -17,8 +17,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (savedInstanceState != null){
+            seconds = savedInstanceState.getInt("seconds");
+            runner = savedInstanceState.getBoolean("runner");
+        }
         runTimer();
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("seconds", seconds);
+        outState.putBoolean("runner", runner);
     }
 
     public void startStopWatch(View view){
